@@ -1,0 +1,20 @@
+name: Request Example.com
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    check-website:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Request example.com
+              run: |
+                    curl -s -v https://example.com
+                    
+            - name: Log time
+              run: echo "Request completed at $(date)"
